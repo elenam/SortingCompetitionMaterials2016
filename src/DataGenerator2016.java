@@ -14,7 +14,9 @@ public class DataGenerator2016 {
 	 *            Author: Elena Machkasova
 	 */
 
-	static int timestamp = 0;
+	private static int timestamp = 0;
+	private static int gridSide;
+	
 
 	public static void main(String[] args) {
 		int defaultGridSide = 100000;
@@ -22,8 +24,15 @@ public class DataGenerator2016 {
 		int defaultWalkMin = 10;
 		int defaultWalkMax =  500;
 		int defaultMaxSpeed = 100;
+		String filename = "nofile";
+		
+		// Reading main args
+		
+		if (args.length >= 1) {
+			filename = args[0];
+		}
 
-		int gridSide = defaultGridSide;
+		gridSide = defaultGridSide; // global variable (need to use in a function)
 		int n = defaultN;
 		int walkMin = defaultWalkMin;
 		int walkMax = defaultWalkMax;
@@ -32,7 +41,7 @@ public class DataGenerator2016 {
 		
 		int walks = 0;
 
-		// pick two points at random
+	
 
 		// start at the center
 		int startX = gridSide / 2;
@@ -77,7 +86,7 @@ public class DataGenerator2016 {
 		}
 		//printArray(points);
 		
-		//System.out.println("The total number of walks is " + walks);
+		System.out.println("The total number of walks is " + walks);
 		
 
 		// Test prints:
@@ -85,7 +94,16 @@ public class DataGenerator2016 {
 		//int[][] points = walk(50, 50, Math.toRadians(0), 5, 100);
 		//printArray(points);
 		
-		
+		// the output goes to the standard output (console)
+		if (filename.equals("nofile")) {
+			writeOutputStandardOut(points);
+		} else { // output goes to a file
+			try {
+				writeOutputFile(new PrintWriter(filename), points);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	/*
@@ -106,17 +124,44 @@ public class DataGenerator2016 {
 	}
 	
 	private static int generateX(int x, double direction, int speed) {
-		return (int) Math.floor(x + speed * Math.cos(direction));
+		return wrapAround((int) Math.floor(x + speed * Math.cos(direction)));
 	}
 	
 	private static int generateY(int y, double direction, int speed) {
-		return (int) Math.floor(y + speed * Math.sin(direction));
+		return wrapAround((int) Math.floor(y + speed * Math.sin(direction)));
+	}
+	
+	private static int wrapAround(int coord) {
+		if (coord < 0) {
+			return coord + gridSide;
+		}
+		if (coord > gridSide) {
+			return coord - gridSide;
+		}
+		else return coord;
 	}
 	
 	private static void printArray(int[][] points) {
 		for (int i = 0; i < points.length; ++i) {
 			System.out.println("x = " + points[i][0] + ", y = " + points[i][1] + ", t = " + points[i][2]);
 		}
+	}
+	
+	private static void writeOutputStandardOut(int[][] points) {
+		for (int i = 0; i < points.length; ++i) {
+			System.out.print(points[i][0] + " ");
+			System.out.print(points[i][1] + " ");
+			System.out.println(points[i][2]);
+		}
+	}
+
+	private static void writeOutputFile(PrintWriter out, int[][] points) {
+		for (int i = 0; i < points.length; ++i) {
+			out.print(points[i][0] + " ");
+			out.print(points[i][1] + " ");
+			out.println(points[i][2]);
+		}
+		out.close();
 	}
 
 }
