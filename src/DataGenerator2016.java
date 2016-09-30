@@ -1,6 +1,5 @@
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.Random;
 
 public class DataGenerator2016 {
 	/**
@@ -20,7 +19,7 @@ public class DataGenerator2016 {
 
 	public static void main(String[] args) {
 		int defaultGridSide = 100000;
-		int defaultN = 10000000;
+		int defaultN = 1000000;
 		int defaultWalkMin = 10;
 		int defaultWalkMax =  500;
 		int defaultMaxSpeed = 100;
@@ -33,15 +32,19 @@ public class DataGenerator2016 {
 		}
 
 		gridSide = defaultGridSide; // global variable (need to use in a function)
-		int n = defaultN;
+		int n = 100000;
 		int walkMin = defaultWalkMin;
 		int walkMax = defaultWalkMax;
 		int maxSpeed = defaultMaxSpeed;
 		// the angle is always between 0 and 360
 		
-		int walks = 0;
-
-	
+		// generate two points:
+		int x1 = (int) (Math.random() * gridSide); 
+		int y1 = (int) (Math.random() * gridSide); 
+		int x2 = (int) (Math.random() * gridSide); 
+		int y2 = (int) (Math.random() * gridSide); 
+		
+		//int walks = 0; // for stats purposes
 
 		// start at the center
 		int startX = gridSide / 2;
@@ -56,8 +59,8 @@ public class DataGenerator2016 {
 		// of points
 		while (timestamp < n) {
 			// generate length of a walk
-			int length = defaultWalkMin
-					+ (int) (Math.random() * (defaultWalkMax - defaultWalkMin));
+			int length = walkMin
+					+ (int) (Math.random() * (walkMax - walkMin));
 			// make sure we are not going over n:
 			if (length + timestamp > n)
 				length = n - timestamp;
@@ -81,12 +84,11 @@ public class DataGenerator2016 {
 				points[oldLength + i][2] = walkPoints[i][2]; // copy timestamp
 			}
 			
-			System.out.println("The walk at the angle " + angle + "at the speed " + speed + " ends at point " + timestamp);
-			++walks;
+			//System.out.println("The walk at the angle " + angle + "at the speed " + speed + " ends at point " + timestamp);
+			//++walks;
 		}
-		//printArray(points);
 		
-		System.out.println("The total number of walks is " + walks);
+		//System.out.println("The total number of walks is " + walks);
 		
 
 		// Test prints:
@@ -96,10 +98,10 @@ public class DataGenerator2016 {
 		
 		// the output goes to the standard output (console)
 		if (filename.equals("nofile")) {
-			writeOutputStandardOut(points);
+			writeOutputStandardOut(x1, y1, x2, y2, points);
 		} else { // output goes to a file
 			try {
-				writeOutputFile(new PrintWriter(filename), points);
+				writeOutputFile(new PrintWriter(filename), x1, y1, x2, y2, points);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -147,7 +149,9 @@ public class DataGenerator2016 {
 		}
 	}
 	
-	private static void writeOutputStandardOut(int[][] points) {
+	private static void writeOutputStandardOut(int x1, int y1, int x2, int y2, int[][] points) {
+		System.out.println(x1 + " " + y1);
+		System.out.println(x2 + " " + y2);
 		for (int i = 0; i < points.length; ++i) {
 			System.out.print(points[i][0] + " ");
 			System.out.print(points[i][1] + " ");
@@ -155,7 +159,9 @@ public class DataGenerator2016 {
 		}
 	}
 
-	private static void writeOutputFile(PrintWriter out, int[][] points) {
+	private static void writeOutputFile(PrintWriter out, int x1, int y1, int x2, int y2, int[][] points) {
+		out.println(x1 + " " + y1);
+		out.println(x2 + " " + y2);
 		for (int i = 0; i < points.length; ++i) {
 			out.print(points[i][0] + " ");
 			out.print(points[i][1] + " ");
