@@ -38,8 +38,8 @@ The changeable parameters to the data generation are as follows:
 * Maximum speed can be between `50` and `300`. The minimum speed is always zero. 
 **TBD**: add the ability to set parameters for data generator from the command line. 
 
-Once the data is generated, it is written out to teh output file (the name supplied on the command line for the data generator). Here is a beginning of data file:
-``
+Once the data is generated, it is written out to the output file (the name supplied on the command line for the data generator). Here is a beginning of data file:
+```
 23597 83108
 67067 36505
 50000 50000 0
@@ -51,7 +51,7 @@ Once the data is generated, it is written out to teh output file (the name suppl
 49700 50156 6
 49650 50182 7
 49600 50208 8
-``
+```
 Here the two reference points are `(23597, 83108)` and `(67067, 36505)`, and the sequence of points starts at `(50000, 50000)` witha  timestamp `0`, and continues from there. 
 
 See the details of data generator in `DataGenerator` file. 
