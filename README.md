@@ -30,3 +30,31 @@ The points of the walk are recorded as a triple of integers: the `X` coordinate,
 
 The last walk may be shorter than its randomly generated length so that the total number of points is exactly `N`.  
 
+The changeable parameters to the data generation are as follows: 
+* `gridSize` can be between `50000` and `200000` (inclusive)
+* Number of points can be between `100000` and `1000000`
+* Minimum walk length can be between `1` and `100`
+* Maximum walk length can be between `100` and `1000`
+* Maximum speed can be between `50` and `300`. The minimum speed is always zero. 
+**TBD**: add the ability to set parameters for data generator from the command line. 
+
+Once the data is generated, it is written out to teh output file (the name supplied on the command line for the data generator). Here is a beginning of data file:
+``
+23597 83108
+67067 36505
+50000 50000 0
+49950 50026 1
+49900 50052 2
+49850 50078 3
+49800 50104 4
+49750 50130 5
+49700 50156 6
+49650 50182 7
+49600 50208 8
+``
+Here the two reference points are `(23597, 83108)` and `(67067, 36505)`, and the sequence of points starts at `(50000, 50000)` witha  timestamp `0`, and continues from there. 
+
+See the details of data generator in `DataGenerator` file. 
+
+
+
