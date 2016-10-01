@@ -52,9 +52,57 @@ Once the data is generated, it is written out to the output file (the name suppl
 49650 50182 7
 49600 50208 8
 ```
-Here the two reference points are `(23597, 83108)` and `(67067, 36505)`, and the sequence of points starts at `(50000, 50000)` witha  timestamp `0`, and continues from there. 
+Here the two reference points are `(23597, 83108)` and `(67067, 36505)`, and the sequence of points starts at `(50000, 50000)` with a  timestamp `0`, and continues from there. 
 
-For complete sample data file see [data1.txt](data1.txt) See the details of data generator in [DataGenerator2016.java](src/DataGenerator2016.java) file. 
+See the details of data generator in [DataGenerator2016.java](src/DataGenerator2016.java) file. 
+
+For complete sample data file see [data1.txt](data1.txt). Its sorted output is in [out1.txt](out1.txt) file. 
+
+## Setup for sorting
+The file [Group0.java](https://github.com/elenam/SortingCompetitionMaterials2015/blob/master/src/Group0.java) provides a template for the setup for your solution. Your class will be called `GroupN`, where `N` is the group number that is assigned to your group. The template class runs the sorting method once before the timing for the [JVM warmup](http://alexandru-ersenie.com/2010/09/12/important-aspects-in-load-performance-testing-1-server-warm-up/). It also pauses for 10ms before the actual test to let any leftover I/O to finish. Since the warmup and the actual sorting are done on the same array (for no reason other than simplicity), the array is cloned from the same input data. 
+
+The data reading, the array cloning, the warmup sorting, and writing out the output are all outside of the timed portion of the method, and thus do not affect the total time. 
+
+Note that you may not use any global variables (other than the coordinates of the reference points that are already initialized for you; you may not change them). 
+
+The only method in the [Group0.java](src/Group0.java) files that you may modify is the `sort` method. It must take the array of points, each of which is in turn an array of 3 integers. The return type of the method can be what it is now, which is the same as the parameter type `int [][]`, or it can be a different array type. If you are sorting in-place, i.e. the sorted result is in the same array, then you can just return a reference to that array, as my prototype method does. If you are returning a different type of an array, the following rules have to be followed:
+* Your `sort` method return type needs to be changed to whatever  array you are returning, and consequently the type of `sorted` array in `main` needs to be changed. 
+* Your return type has to be an array (not an array list) and it has to have the same number of elements as the original array, one point per element. 
+* You need to supply a function to write out your result into a file. The file has to be exactly the same as in the prototype implementation; they will be compared using `diff` system command. 
+
+If you are not changing the return type, you don't need to modify anything other than `sort` method. 
+
+Even though you are not modifying anything other than the `sort` method, you still need to submit your entire class: copy the template, rename the Java class to your group number, and change the`sort` method. You may use supplementary classes, just don't forget to submit them. Make sure to add your names in comments when you submit. 
+
+**Important:** if the sorting times may be too small to distinguish groups based on just one run of the sorting, so I may loop over the sorting section multiple times. If this is the case, I will let you know no later than a day after the preliminary competition and will modify `Group0` file accordingly.  
+
+## Dates:
+
+*Friday, Oct 7* in class (1pm) is the *preliminary* competition. Please send me all your materials no later than 10:30am on Friday. This is required for everyone in the class. Groups remain anonymous after this phase, but all the solutions (in bytecode) become available. 
+
+We may have a second preliminary competition some time the week of Oct 10. 
+
+*Thursday, Oct 20* in the lab (2pm) is the *final* competition. All source code is posted immediately after that. Those in class will have their names revealed, others may choose to remain anonymous (but the code will still be posted). 
+
+Note that there are several more parts of the Algorithms assignment, including presentations and a write-up. Obviously, these are only for students in the class. 
+
+### Scoring
+
+The programs are tested on a few (between 1 and 3) data sets. For each data set each group's program is run three times, the median value counts. The groups are ordered by their median score for each data file and assigned places, from 1 to N. 
+
+The final score is given by the sum of places for all data sets. If the sum of places is equal for two groups, the sum of median times for all the runs resolves the tie. So if one group was first for one data set and third for the other one (2 sets total being run), it scored better than a group that was third for the first data set and second for the other. However, if one group was first for the first set and third for the other one, and the second group was second in both, the sum of times determines which one of them won since the sum of places is the same (1 + 3 = 2 + 2). 
+
+If a program has a compilation or a runtime error, doesn't sort correctly, or prints anything other than the total time in milliseconds, it gets a penalty of 1000000ms for that run. 
+
+### System specs
+
+The language used is Java 8 (as installed in the CSci lab). It's ran on a single CPU core.  
+
+I will post a script for running this program (with a correctness check and all), but for now a couple of things to know: run your program out of `/tmp` directory to avoid overhead of communications with the file server, and pin your program to a single core, i.e. run it like this:
+``taskset -c 0 java GroupN``
+
+
+
 
 
 
