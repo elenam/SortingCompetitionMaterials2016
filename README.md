@@ -94,13 +94,16 @@ The final score is given by the sum of places for all data sets. If the sum of p
 
 If a program has a compilation or a runtime error, doesn't sort correctly, or prints anything other than the total time in milliseconds, it gets a penalty of 1000000ms for that run. 
 
-### System specs
+## System specs
 
 The language used is Java 8 (as installed in the CSci lab). It's ran on a single CPU core.  
 
 I will post a script for running this program (with a correctness check and all), but for now a couple of things to know: run your program out of `/tmp` directory to avoid overhead of communications with the file server, and pin your program to a single core, i.e. run it like this:
 ``taskset -c 0 java GroupN``
 
+### Credits
+
+Thanks to Kevin Arhelger who suggested the starting idea and to Stephen Adams for an independent, somewhat similar, suggestion. Also thanks to Peter Dolan for a helpful conversation. 
 
 
 
