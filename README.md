@@ -54,7 +54,7 @@ Once the data is generated, it is written out to the output file (the name suppl
 ```
 Here the two reference points are `(23597, 83108)` and `(67067, 36505)`, and the sequence of points starts at `(50000, 50000)` witha  timestamp `0`, and continues from there. 
 
-For complete sample data file see [data1.txt](data1.txt) See the details of data generator in [DataGenerator](src/DataGenerator) file. 
+For complete sample data file see [data1.txt](data1.txt) See the details of data generator in [DataGenerator2016.java](src/DataGenerator2016.java) file. 
 
 
 
