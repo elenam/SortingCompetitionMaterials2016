@@ -31,11 +31,11 @@ public class DataGenerator2016 {
 			filename = args[0];
 		}
 
-		gridSide = defaultGridSide; // global variable (need to use in a function)
-		int n = 100000;
-		int walkMin = defaultWalkMin;
-		int walkMax = defaultWalkMax;
-		int maxSpeed = defaultMaxSpeed;
+		gridSide = 50000; // global variable (need to use in a function)
+		int n = 500000;
+		int walkMin = 70;
+		int walkMax = 700;
+		int maxSpeed = 100;
 		// the angle is always between 0 and 360
 		
 		// generate two points:
