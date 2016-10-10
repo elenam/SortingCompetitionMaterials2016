@@ -117,6 +117,17 @@ public class Group0 {
 			e.printStackTrace();
 		}
 	}
+	
+	private static int[][] deepClone(int[][] toClone) {
+		int[][] clone = new int[toClone.length][];
+		
+		int i = 0;
+		for (int[] point: toClone) {
+			clone[i++] = point.clone();
+		}
+		
+		return clone;
+	}
 
 	// for test printing:
 	private static void printArray(int[][] points, int n) {
