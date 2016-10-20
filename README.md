@@ -101,6 +101,20 @@ The language used is Java 8 (as installed in the CSci lab). It's ran on a single
 I will post a script for running this program (with a correctness check and all), but for now a couple of things to know: run your program out of `/tmp` directory to avoid overhead of communications with the file server, and pin your program to a single core, i.e. run it like this:
 ``taskset -c 0 java GroupN``
 
+## Results of the competition
+
+Results will be posted shortly. Please keep in mind that results are preliminary until the correctness analysis is done. 
+
+## Correctness analysis
+
+Each group is assigned another group to check whether that group followed all the rules as spefcified above and in clarifications sent to the class list. If any issues are reported, the group in question can reply if they think they have followed the rules. 
+
+The correctness analysis reports are due Monday Oct 24, and the responses (if any) are due Wedn Oct 26. After this process completes, the competition results are final. 
+
+## Presentations
+
+Presentations will be in the lab Th Nov 3 at 2pm. The requirements will be posted shortly.  
+
 ### Credits
 
 Thanks to Kevin Arhelger who suggested the starting idea and to Stephen Adams for an independent, somewhat similar, suggestion. Also thanks to Peter Dolan for a helpful conversation. 
