@@ -113,7 +113,7 @@ Congratulations to the winners and thanks to all for participating!
 * Group 6 Humza Haider, Shawn Seymour: The sum of places is 10, the sum of medians is 345.0
 * Group 1 TM, Sam Miller: The sum of places is 16, the sum of medians is 719.0
 * Group 4 Kyle Hakala, Zach Litzinger: The sum of places is 17, the sum of medians is 688.0
-* Group 8 Elsa Brwoning, Ai Sano: The sum of places is 18, the sum of medians is 731.0
+* Group 8 Elsa Browning, Ai Sano: The sum of places is 18, the sum of medians is 731.0
 * Group 7 Emily Schaefer, Sophia Mitchellette, Sydney Richards: The sum of places is 22, the sum of medians is 1408.0
 * Group 3 Daniel W.: The sum of places is 24, the sum of medians is 1745.0
 * Group 11: Richard Stangl, Jacob Mitchell: The sum of places is 26, the sum of medians is 2000000.0
